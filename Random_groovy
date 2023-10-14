@@ -1,0 +1,16 @@
+// Generate a random integer between a specified range
+def randomInt = new Random().nextInt(100)
+
+// Generate a random double between 0 and 1
+def randomDouble = Math.random()
+
+// Generate a random boolean (true or false)
+def randomBoolean = new Random().nextBoolean()
+
+// Generate a random string of a specific length
+def randomString = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 10)
+
+println("Random Integer: $randomInt")
+println("Random Double: $randomDouble")
+println("Random Boolean: $randomBoolean")
+println("Random String: $randomString")
