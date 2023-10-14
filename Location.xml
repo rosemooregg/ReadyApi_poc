@@ -1,0 +1,30 @@
+<con:soapui-project name="ReadyAPI_POC" resourceRoot="" soapui-version="5.0.0" abortOnError="true" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config">
+    <con:testSuite name="TestSuite 1" id="28e9e045-92ab-469c-9a86-93247b66c92f" xmlns:con="http://eviware.com/soapui/config">
+        <con:properties>
+            <con:property name="URL" type="string">https://api.edmunds.com/api/vehicle/v2/makes?fmt=json&amp;api_key={your API key}</con:property>
+            <con:property name="LocationName" type="string">YourLocationName</con:property>
+        </con:properties>
+        <con:testCase name="TestCase 1" id="d0554e00-15ac-43c4-9fb0-4f89eb0cf3c3" xmlns:con="http://eviware.com/soapui/config">
+            <con:testStep name="Properties" id="6db4251f-1fe4-4af2-bac0-6ec5c01ab78b" xmlns:con="http://eviware.com/soapui/config">
+                <con:config>
+                    <con:type>groovy</con:type>
+                    <con:script><![CDATA[
+import org.apache.commons.lang.RandomStringUtils
+import java.util.UUID
+
+// Generate a random email address
+def randomEmail = "user" + UUID.randomUUID().toString().replace("-", "") + "@example.com"
+
+// Generate random first name and last name
+def randomFirstName = RandomStringUtils.randomAlphabetic(8)
+def randomLastName = RandomStringUtils.randomAlphabetic(8)
+
+testRunner.testCase.setPropertyValue("RandomEmail", randomEmail)
+testRunner.testCase.setPropertyValue("RandomFirstName", randomFirstName)
+testRunner.testCase.setPropertyValue("RandomLastName", randomLastName)
+]]></con:script>
+                </con:config>
+            </con:testStep>
+        </con:testCase>
+    </con:testSuite>
+</con:soapui-project>
