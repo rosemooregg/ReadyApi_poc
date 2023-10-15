@@ -1,0 +1,45 @@
+import groovy.json.JsonSlurper
+
+// Load the OpenAPI document (replace 'openapi.json' with the actual path or URL)
+def openApiDocument = new JsonSlurper().parseText(new File('openapi.json').text)
+
+// Access the paths section of the OpenAPI document
+def paths = openApiDocument.paths
+
+// Create an empty list to store the generated URLs
+def generatedUrls = []
+
+// Iterate through each endpoint in the paths
+paths.each { path, pathDefinition ->
+    pathDefinition.each { method, operation ->
+        def endpointUrl = "https://api.example.com${path}"  // Replace with your base URL
+        generatedUrls.add(endpointUrl)
+        
+        def testCaseName = "${method} ${path}"  // Create a unique test case name
+        def testStepName = "Test ${method} ${path}"
+
+        // Create a new test case
+        def newTestCase = testRunner.testCase.testSuite.addNewTestCase(testCaseName)
+
+        // Create a REST Request test step for the endpoint
+        def restRequest = newTestCase.addTestStep(com.eviware.soapui.impl.wsdl.teststeps.RESTRequestTestRequestStep.factory, testStepName)
+
+        // Configure the REST Request test step with the endpoint information
+        restRequest.getHttpRequest().setMethod(method.toUpperCase())
+        restRequest.getHttpRequest().setEndpoint(endpointUrl)
+        
+        // Populate the 'endpointUrl' property in the test case
+        newTestCase.setPropertyValue('endpointUrl', endpointUrl)
+    }
+}
+
+// Convert the list of generated URLs to a string
+def urlList = generatedUrls.join('\n')
+
+// Send the URL list to an email address
+def recipientEmail = "Reginald.moore@dealerware.com"
+def subject = "Generated API URLs"
+def body = "List of generated API URLs:\n\n$urlList"
+
+// Send the email using your email library or tool
+// Example: sendEmail(recipientEmail, subject, body)
