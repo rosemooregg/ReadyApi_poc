@@ -1,0 +1,23 @@
+@Grab('io.swagger:swagger-parser:2.0.12')
+import io.swagger.parser.SwaggerParser
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+import javax.mail.Message
+import javax.mail.Session
+import javax.mail.Transport
+import javax.mail.internet.InternetAddress
+import javax.mail.internet.MimeMessage
+import java.util.Properties
+
+// Replace with the URL of your Swagger UI
+def swaggerUiUrl = "https://your-api.com/swagger-ui/index.html"
+
+// Parse Swagger definition from Swagger UI
+def swaggerJson = new SwaggerParser().read(swaggerUiUrl)
+
+// Extract API endpoints from Swagger definition
+def paths = swaggerJson.paths
+
+// Iterate through each API endpoint
+paths.each { path, pathDefinition ->
+    pathDefinition.each { method⬤
