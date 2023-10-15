@@ -1,0 +1,28 @@
+<con:soapui-project id="4c69f4c7-dc3b-403e-a49e-6b8492e66c70" name="Sample Project" resourceRoot="${projectDir}" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config">
+    <con:settings/>
+    <con:testSuite id="5a52d274-30c2-4c41-a4ec-274450440d50" name="Sample TestSuite" runType="SEQUENTIAL">
+        <con:settings/>
+        <con:testCase id="a1aa5df9-35c2-466f-a0aa-4ee94bb8a1e4" name="Turn Toggle On">
+            <con:settings/>
+            <con:testStep type="groovyscript" name="Groovy Script">
+                <con:settings/>
+                <con:config><![CDATA[// Your Groovy script to turn the toggle on
+def propertyValue = "true"
+log.info("Toggle On: " + propertyValue)
+// You can interact with the API to turn the toggle on using propertyValue
+]]></con:config>
+            </con:testStep>
+        </con:testCase>
+        <con:testCase id="b1ab6df8-44d3-477e-b1bb-7ee43aa9b8e5" name="Turn Toggle Off">
+            <con:settings/>
+            <con:testStep type="groovyscript" name="Groovy Script">
+                <con:settings/>
+                <con:config><![CDATA[// Your Groovy script to turn the toggle off
+def propertyValue = "false"
+log.info("Toggle Off: " + propertyValue)
+// You can interact with the API to turn the toggle off using propertyValue
+]]></con:config>
+            </con:testStep>
+        </con:testCase>
+    </con:testSuite>
+</con:soapui-project>
