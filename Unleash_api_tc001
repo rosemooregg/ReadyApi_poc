@@ -1,0 +1,35 @@
+<con:testCase name="Unleash API Test Case">
+    <con:settings/>
+    <con:testStep type="groovyscript" name="Set Unleash API Endpoint">
+        <con:settings/>
+        <con:config>
+            <![CDATA[// Set the Unleash API endpoint in the 'unleash' property
+testRunner.testCase.testSuite.project.setPropertyValue("unleash", "https://your-unleash-api-endpoint.com/api/v5");
+]]>
+        </con:config>
+    </con:testStep>
+    <con:testStep type="restrequest" name="Unleash API Request">
+        <con:settings/>
+        <con:config>
+            <![CDATA[
+            {
+                "name": "Unleash API Request",
+                "request": {
+                    "method": "GET",
+                    "resource": "${#Project#unleash}",
+                    "requestHeaders": [
+                        {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                        },
+                        {
+                            "name": "Authorization",
+                            "value": "Bearer your-access-token"
+                        }
+                    ]
+                }
+            }
+            ]]>
+        </con:config>
+    </con:testStep>
+</con:testCase>
