@@ -10,7 +10,7 @@ import javax.mail.internet.MimeMessage
 import java.util.Properties
 
 // Replace with the URL of your Swagger UI
-def swaggerUiUrl = "https://your-api.com/swagger-ui/index.html"
+def swaggerUiUrl = "https://developer.dealerware.com/api_v3.html"
 
 // Parse Swagger definition from Swagger UI
 def swaggerJson = new SwaggerParser().read(swaggerUiUrl)
